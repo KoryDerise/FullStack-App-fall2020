@@ -1,5 +1,6 @@
 const express = require('express');
 const usersRouter = require('./routes/users');
+const tasksRouter = require('./routes/tasks');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
 
@@ -13,6 +14,7 @@ require('./config/db');
 // --- MIDDLE WARE ---
 app.use(express.json());
 app.use('/users', usersRouter);
+app.use('/tasks', tasksRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 
