@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const authenticatePassword = async (req, res, next) => {
-
   if (!req.body.username || !req.body.password) return res.status(500).send({message: "Please enter your username and password."});
 
   const userProvidedUsername = req.body.username;
@@ -21,7 +20,7 @@ const authenticatePassword = async (req, res, next) => {
 
 const createToken = (req, res) => {
   const token = jwt.sign({ _id: req.body.curUser._id }, process.env.TOKEN_SECRET);
-  return res.status(200).send(token);
+  return res.status(200).send({token: token, userId: req.body.curUser._id});
 }
 
 const verifyToken = (req, res, next) => {

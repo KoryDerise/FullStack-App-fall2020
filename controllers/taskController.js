@@ -10,6 +10,14 @@ const getTasks = (req, res) => {
     });
 }
 
+const getUserTasks = async (req, res) => {
+  const userId = req.body.userId;
+  await Task.find({ userId: userId }, (err, users) => {
+    if (err) res.status(500).send(err.message);
+    else res.status(200).send(users);
+  });
+}
+
 const createTask = async (req, res) => {
   const task = req.body;
   await Task.create(task)
@@ -43,4 +51,4 @@ const deleteTask = async (req, res) => {
   });
 }
 
-module.exports = { createTask, seedTasks, updateTask, getTasks, deleteTask };
+module.exports = { createTask, seedTasks, updateTask, getTasks, getUserTasks, deleteTask };
