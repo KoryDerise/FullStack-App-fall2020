@@ -2,16 +2,14 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "start-client": "cd frontend && yarn start",
-    "build": "yarn && (cd frontend && yarn",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "yarn && (cd frontend && yarn && yarn run build)"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
