@@ -1,0 +1,6 @@
+.login-and-register__main-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

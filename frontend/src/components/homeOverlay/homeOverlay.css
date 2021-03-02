@@ -1,0 +1,31 @@
+.home-overlay--right, .home-overlay--left {
+  display: grid;
+  place-items: center;
+  transition: 1s ease-in-out;
+  position: absolute;
+  padding: 20px 40px;
+  background-color: red;
+  text-align: center;
+  height: 100%;
+  width: 25%;
+}
+
+.home-overlay--right {
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+  left: 50%;
+}
+
+.home-overlay--left {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  left: 25%;
+}
+
+.home-overlay__btn {
+  border: none;
+  background-color: white;
+  color: red;
+  padding: 8px;
+  font-size: 24px;
+}
