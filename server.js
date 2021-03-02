@@ -13,10 +13,12 @@ const PORT = process.env.PORT || 5000;
 require('dotenv').config();
 require('./config/db');
 
-// (╯°□°)╯︵ SɹOƆ
-const cors = require('cors');
-app.use(cors());
+// Server ReactJS App
+app.use(express.static(path.join(__dirname, '/frontend/build')));
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/frontend/build', 'index.html'));
+})
 
 // --- MIDDLE WARE ---
 app.use(express.json());
