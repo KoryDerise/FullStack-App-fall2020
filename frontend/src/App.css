@@ -10,7 +10,11 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  height: 35%;
+  height: 40%;
   max-height: 800px;
   min-height: 350px;
+}
+
+.app__main-header {
+  color: rgb(45, 45, 56);
 }

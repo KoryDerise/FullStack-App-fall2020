@@ -8,7 +8,7 @@ import Tasks from './pages/tasks/tasks';
 function App() {
   return (
     <div className="app">
-      <h1>USER TASKS APP</h1>
+      <h1 className="app__main-header">Track Those Tasks!</h1>
       <div className="content-container">
         <Switch>
 

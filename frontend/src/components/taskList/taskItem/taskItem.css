@@ -1,0 +1,39 @@
+.task-list__task-item {
+  display: flex;
+  margin: 12px 0;
+  width: 80%;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 4px;
+}
+
+.task-item__container {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+
+.task-item__text--complete {
+  text-decoration: line-through;
+}
+
+.task-item__control-btn {
+  border: none;
+  background-color: rgb(27, 130, 226);
+  color: white;
+  margin: 4px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.save-btn, .complete-btn {
+  background-color: rgb(19, 197, 108);
+}
+
+.cancel-btn, .delete-btn {
+  background-color: rgb(207, 72, 19);
+}
+
+.task-item__submit-btn {
+  visibility: hidden;
+}

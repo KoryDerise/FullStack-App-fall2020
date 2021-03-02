@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const authenticatePassword = async (req, res, next) => {
   if (!req.body.username || !req.body.password) return res.status(500).send({message: "Please enter your username and password."});
 
-  const userProvidedUsername = req.body.username;
+  const userProvidedUsername = req.body.username.toLowerCase();
   const userProvidedPassword = req.body.password;
 
   const dbUser = await User.findOne({ username: userProvidedUsername });

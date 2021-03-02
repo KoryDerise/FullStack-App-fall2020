@@ -8,21 +8,22 @@ const getTasks = (req, res) => {
       if (tasks.length === 0) return res.status(404).send("No tasks found.");
       return res.status(200).send(tasks);
     });
-}
+};
 
 const getUserTasks = async (req, res) => {
   const userId = req.body.userId;
-  await Task.find({ userId: userId }, (err, users) => {
-    if (err) res.status(500).send(err.message);
-    else res.status(200).send(users);
+  return await Task.find({ userId: userId }, (err, tasks) => {
+    if (err) return res.status(500).send(err.message);
+    else return res.status(200).send(tasks);
   });
-}
+};
 
-const createTask = async (req, res) => {
+const createTask = async (req, res, next) => {
   const task = req.body;
-  await Task.create(task)
-    .then(task => res.status(200).send(task))
-    .catch(err => res.status(500).send(err.message));
+  return await Task.create(task, (err, task) => {
+    if (err) return res.status(500).send(err.message);
+    return next();
+  });
 };
 
 const seedTasks = async (req, res) => {
@@ -31,23 +32,23 @@ const seedTasks = async (req, res) => {
     .catch(err => res.status(500).send(err.message));
 }
 
-const updateTask = async (req, res) => {
+const updateTask = async (req, res, next) => {
+  const taskId = req.body._id;
 
-  const taskId = req.body.id;
-  return Task.findByIdAndUpdate(taskId, { $set: req.body }, { new: true }, (err, task) => {
-    console.log(task);
+  return await Task.findByIdAndUpdate(taskId, { $set: req.body }, { new: true }, (err, task) => {
     if (err) return res.status(400).send(err.message);
     if (!task) return res.status(404).send("Task not found.");
-    return res.status(200).send(task);
+    return next();
   });
 }
 
-const deleteTask = async (req, res) => {
-  const taskId = req.body.id;
-  return Task.findByIdAndRemove(taskId, (err, task) => {
+const deleteTask = async (req, res, next) => {
+  const taskId = req.body.taskId;
+
+  return await Task.findByIdAndRemove(taskId, (err, task) => {
     if (err) return res.status(400).send(err.message);
     if (!task) return res.status(404).send("No task found.");
-    return res.status(200).send(task);
+    return next();
   });
 }
 

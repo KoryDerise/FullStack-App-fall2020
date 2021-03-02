@@ -1,0 +1,31 @@
+.add-task-container {
+  width: 80%;
+}
+
+.add-task__form {
+  display: flex;
+}
+
+.add-task__form-text {
+  display: flex;
+  align-items: center;
+}
+
+.add-task__add-task-btn {
+  margin-right: 16px;
+  border: none;
+  color: white;
+  background-color: rgb(236, 132, 14);
+  padding: 8px;
+  font-weight: bold;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.add-task__add-task-input {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding-left: 8px;
+  border: none;
+  height: 100%;
+}

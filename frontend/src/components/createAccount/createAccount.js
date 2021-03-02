@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './createAccount.css';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { registerUser } from '../../redux/actions/userActions';
 
@@ -10,9 +10,13 @@ const CreateAccount = () => {
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
 
+  const error = useSelector(state => state.user.registerError);
+  console.log(error);
+
   const dispatch = useDispatch();
 
-  const handleRegister = (user) => {
+  const handleRegister = (e, user) => {
+    e.preventDefault();
     dispatch(registerUser(user));
   }
 
@@ -56,11 +60,14 @@ const CreateAccount = () => {
           value={ passwordInput }
           onChange={ e => setPasswordInput(e.target.value) }
         />
+        <div className="create-account__error-text">
+          { error.message }
+        </div>
         <input 
           className="create-account__form-button" 
-          type="button" 
+          type="submit" 
           value="SIGN UP" 
-          onClick={ () => handleRegister(createUserObj()) }
+          onClick={ (e) => handleRegister(e, createUserObj()) }
         />
       </div>
     </form>

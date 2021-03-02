@@ -15,7 +15,8 @@ const SignIn = () => {
 
   const dispatch = useDispatch();
 
-  const handleSignIn = (userData) => {
+  const handleSignIn = (e, userData) => {
+    e.preventDefault();
 
     if (!userData.username) return;
     if (!userData.password) return;
@@ -23,9 +24,9 @@ const SignIn = () => {
     dispatch(loginUser(userData));
   }
 
-  return jwt? (<Redirect to='/tasks' />) : ( 
+  return jwt ? (<Redirect to='/tasks' />) : ( 
     <form className="sign-in">
-
+      
       <div className="sign-in__title">
         Sign in
       </div>
@@ -54,8 +55,10 @@ const SignIn = () => {
         </div>
         <input 
           className="sign-in__form-button" 
-          type="button" value="SIGN IN" 
-          onClick={ () => handleSignIn({ username: usernameInput, password: passwordInput }) } />
+          type="submit" 
+          value="SIGN IN" 
+          onClick={ (e) => handleSignIn(e, { username: usernameInput, password: passwordInput }) } 
+        />
       </div>
     </form>
   );

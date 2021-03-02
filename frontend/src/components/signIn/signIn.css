@@ -2,8 +2,9 @@
   padding: 20px 40px;
   background-color: white;
   text-align: center;
-    border-top-left-radius: 16px;
+  border-top-left-radius: 16px;
   border-bottom-left-radius: 16px;
+  width: 25%;
 }
 
 .sign-in__title {
