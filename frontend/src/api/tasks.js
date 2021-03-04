@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = process.env.REACT_APP_API_URL;
+const url = 'https://cryptic-woodland-11244.herokuapp.com';
 
 export const postNewTask = async (task, token) => {
   return await axios.post(`${url}/tasks`, task, { headers: { 'auth-token': token } });

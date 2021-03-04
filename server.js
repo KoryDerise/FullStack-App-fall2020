@@ -18,6 +18,13 @@ require('./config/db');
 const cors = require('cors');
 app.use(cors());
 
+// --- MIDDLE WARE ---
+app.use(express.json());
+app.use('/users', usersRouter);
+app.use('/tasks', verifyToken, tasksRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
+
 // Server ReactJS App
 app.use(express.static(path.join(__dirname + '/frontend/build')));
 
@@ -25,11 +32,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/frontend/build', 'index.html'));
 })
 
-// --- MIDDLE WARE ---
-app.use(express.json());
-app.use('/users', usersRouter);
-app.use('/tasks', verifyToken, tasksRouter);
-app.use('/login', loginRouter);
-app.use('/register', registerRouter);
+
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}!`));
